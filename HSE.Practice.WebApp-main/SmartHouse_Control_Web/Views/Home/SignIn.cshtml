@@ -1,0 +1,103 @@
+﻿@model SmartHouse_Control_Web.Models.LoginViewModel
+
+<br />
+<div class='col-md-1 bg-cl-gray'
+	 style='width: 300px; -ms-border-radius: 5px; border-radius: 5px; left: 150px'>
+	<br />
+	@using (Html.BeginForm
+		(
+		 "SignIn",
+			"Home",
+			"",
+			FormMethod.Post,
+			new
+			{
+				role = "form"
+			}))
+	{
+		@Html.AntiForgeryToken()
+		<dl class='form-group'>
+			<dt>
+				@Html.LabelFor(
+				               m => m.Login,
+					new
+						{
+							style = "border: none"
+						})
+			</dt>
+			<dd>
+				@if (Model != null)
+				{
+					@Html.TextBoxFor(
+									 m => m.Login,
+						new
+							{
+								@class = "form-control",
+								placeholder = "Pick a username",
+								style = "background: rgba(255, 0, 0, 0.3)"
+							})
+				}
+				else
+				{
+					@Html.TextBoxFor(
+									 m => m.Login,
+						new
+							{
+								@class = "form-control",
+								placeholder = "Pick a username"
+							})
+				}
+				@Html.ValidationMessageFor(
+										   m => m.Login,
+					"",
+					new
+						{
+							@class = "text-danger"
+						})
+			</dd>
+		</dl>
+		<dl class='form-group'>
+			<dt>
+				@Html.LabelFor(m => m.Password, new { style = "border: none" })
+			</dt>
+			<dd>
+				@if (Model != null)
+				{
+					@Html.TextBoxFor(
+									 m => m.Password,
+						new
+							{
+								@class = "form-control",
+								placeholder = "Pick a password",
+								type = "password",
+								style = "background: rgba(255, 0, 0, 0.3)"
+							})
+				}
+				else
+				{
+					@Html.TextBoxFor(
+									 m => m.Password,
+						new
+							{
+								@class = "form-control",
+								placeholder = "Pick a password",
+								type = "password"
+							})
+				}
+				@Html.ValidationMessageFor(
+										   m => m.Password,
+					"",
+					new
+						{
+							@class = "text-danger"
+						})
+			</dd>
+		</dl>
+		<button class='btn-block'
+				style='-ms-border-radius: 5px; border-radius: 5px; background-color: #2DC354; border: none; color: white; height: 30px'
+				type='submit'>
+			Войти
+		</button>
+		<br />
+	}
+</div>

@@ -1,0 +1,33 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:SmartHouse_Control.UI"
+    xmlns:controls="clr-namespace:SmartHouse_Control.UI.controls"
+    x:Class="SmartHouse_Control.UI.entering_menu"
+    mc:Ignorable="d"
+    Title="Авторизация" Height="259.832" Width="261.506" WindowStyle="ToolWindow" Background="#E5171515"
+    ResizeMode="NoResize" Loaded="Window_Loaded">
+
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="29" Margin="31,83,0,0" VerticalAlignment="Top" Width="193"
+               Source="/SmartHouse_Control;component/Resources/sm.png" Stretch="Fill" />
+        <Image HorizontalAlignment="Left" Height="25" Margin="112,53,0,0" VerticalAlignment="Top" Width="32"
+               Source="/SmartHouse_Control;component/Resources/To.png" Stretch="Fill" />
+        <Image HorizontalAlignment="Left" Height="30" Margin="48,18,0,0" VerticalAlignment="Top" Width="153"
+               Source="/SmartHouse_Control;component/Resources/welcome.png" Stretch="Fill" />
+
+        <controls:TextField x:Name="login" HorizontalAlignment="Left" Height="19" Margin="31,132,0,0"
+                            TextWrapping="Wrap" VerticalAlignment="Top" Width="193" Placeholder="Enter login..." />
+        <PasswordBox x:Name="password" HorizontalAlignment="Left" Margin="31,164,0,0" VerticalAlignment="Top"
+                     Width="193" Height="19" KeyDown="Password_KeyDown" />
+        <Button x:Name="accept_bttn" Content="Войти" HorizontalAlignment="Left" Margin="145,194,0,0"
+                VerticalAlignment="Top" Width="79" Height="23" Background="#FFE4F9FF"
+                Template="{StaticResource btTemplate}" Click="Accept_bttn_Click" />
+        <TextBlock x:Name="mistake" HorizontalAlignment="Left" Margin="4,188,0,0" TextWrapping="Wrap"
+                   Text="Введен неверный логин &#10;                     или пароль" VerticalAlignment="Top"
+                   Background="#E5171515" Foreground="Red" Height="36" />
+
+    </Grid>
+</Window>

@@ -1,0 +1,28 @@
+﻿@model TeamProject.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+        @Html.LabelFor(m => m.Login, "Логин")
+        <br />
+        @Html.TextBoxFor(m => m.Login)
+        <br /><br />
+        @Html.LabelFor(m => m.Password, "Пароль")
+        <br />
+        @Html.PasswordFor(m => m.Password)
+        <p><input type="submit" value="Войти" /></p>
+    }
+    @Html.ActionLink("Регистрация", "SignUp", "Account")
+</body>
+</html>

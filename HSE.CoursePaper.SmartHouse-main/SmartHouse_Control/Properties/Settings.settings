@@ -1,0 +1,17 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)"
+              GeneratedClassNamespace="SmartHouse_Control.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="full_access" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Полный доступ</Value>
+    </Setting>
+    <Setting Name="partly_access" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Частичный доступ</Value>
+    </Setting>
+    <Setting Name="no_access" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Отсутствует доступ</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

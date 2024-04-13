@@ -1,0 +1,241 @@
+﻿@model Provider.CurrentSession.Room
+<head>
+	<link href="~/Scripts/Libs/jquery-ui-styles/jquery-ui.min.css" rel="stylesheet" type='text/css' />
+	<link href="~/Content/xbrowser-styles.css" rel="stylesheet" type='text/css' />
+
+	<script src="~/Scripts/Libs/jquery.js"></script>
+	<script src="~/Scripts/Libs/jquery-ui.js"></script>
+	<script src="~/Scripts/Libs/webgl-utils.js"></script>
+	<script src="~/Scripts/Libs/gl-matrix.js"></script>
+	<script src="~/Scripts/Viewer/xbim-binary-reader.debug.js"></script>
+	<script src="~/Scripts/Viewer/xbim-model-geometry.debug.js"></script>
+	<script src="~/Scripts/Viewer/xbim-model-handle.debug.js"></script>
+	<script src="~/Scripts/Viewer/xbim-product-type.debug.js"></script>
+	<script src="~/Scripts/Viewer/xbim-shaders.debug.js"></script>
+	<script src="~/Scripts/Viewer/xbim-state.debug.js"></script>
+	<script src="~/Scripts/Viewer/xbim-triangulated-shape.debug.js"></script>
+	<script src="~/Scripts/Viewer/xbim-viewer.debug.js"></script>
+
+	<script src="~/Scripts/Plugins/NavigationCube/xbim-navigation-cube-shaders.debug.js"></script>
+	<script src="~/Scripts/Plugins/NavigationCube/xbim-navigation-cube-textures.debug.js"></script>
+	<script src="~/Scripts/Plugins/NavigationCube/xbim-navigation-cube.debug.js"></script>
+
+	<script src="~/Scripts/Browser/xbim-attribute-dictionary.debug.js"></script>
+	<script src="~/Scripts/Browser/xbim-browser.debug.js"></script>
+	<script src="~/Scripts/Browser/xbim-cobie-utils.debug.js"></script>
+	<script src="~/Scripts/Browser/xbim-cobieuk-utils.debug.js"></script>
+	<script src="~/Scripts/Browser/xbim-visual-attribute.debug.js"></script>
+	<script src="~/Scripts/Browser/xbim-visual-entity.debug.js"></script>
+	<script src="~/Scripts/Browser/xbim-visual-model.debug.js"></script>
+	<script src="~/Scripts/Browser/xbim-visual-property.debug.js"></script>
+	<script src="~/Scripts/Browser/xbim-visual-templates.debug.js"></script>
+	<script src="~/Scripts/Browser/xbim-visual-assignment-set.debug.js"></script>
+	<script>
+		$(document).ready(function () {
+			//declare viewer and browser at the beginning so that it can be used as a variable before it is initialized.
+			var viewer = null;
+			var browser = null;
+
+			function initControls() {
+
+				$("#semantic-descriptive-info").accordion({
+					heightStyle: "fill"
+				});
+				$("#semantic-model").accordion({
+					heightStyle: "fill"
+				});
+
+				$("#btnLocate").button().click(function () {
+					var id = $(this).data("id");
+					if (typeof (id) != "undefined" && viewer) {
+						viewer.zoomTo(parseInt(id));
+					}
+				});
+
+				$("#toolbar button").button();
+
+				$("#btnClip").click(function () {
+					viewer.clip();
+				});
+
+				$("#btnUnclip").click(function () {
+					viewer.unclip();
+				});
+
+			}
+			function reinitControls() {
+				$("#semantic-model").accordion("refresh");
+				$("#semantic-descriptive-info").accordion("refresh");
+			}
+			initControls();
+			$(window).resize(function () {
+				reinitControls();
+			});
+
+			var keepTarget = false;
+			browser = new xBrowser();
+			browser.on("loaded", function (args) {
+				var facility = args.model.facility;
+				//render parts
+				browser.renderSpatialStructure("structure", true);
+				browser.renderAssetTypes("assetTypes", true);
+				browser.renderSystems("systems");
+
+				//open and selectfacility node
+				$("#structure > ul > li").click();
+			});
+
+			browser.on("entityClick", function (args) {
+				var span = $(args.element).children("span.xbim-entity");
+				if (document._lastSelection)
+					document._lastSelection.removeClass("ui-selected");
+				span.addClass("ui-selected")
+				document._lastSelection = span;
+			});
+			browser.on("entityActive", function (args) {
+				var isRightPanelClick = false;
+				if (args.element)
+					if ($(args.element).parents("#semantic-descriptive-info").length != 0)
+						isRightPanelClick = true;
+
+				//set ID for location button
+				$("#btnLocate").data("id", args.entity.id);
+
+				browser.renderPropertiesAttributes(args.entity, "attrprop");
+				browser.renderAssignments(args.entity, "assignments");
+
+				if (isRightPanelClick)
+					$("#attrprop-header").click();
+
+			});
+
+			browser.on("entityDblclick", function (args) {
+				var entity = args.entity;
+				var allowedTypes = ["space", "assettype", "asset"];
+				if (allowedTypes.indexOf(entity.type) === -1) return;
+
+				var id = parseInt(entity.id);
+				if (id && viewer) {
+					viewer.resetStates();
+					viewer.renderingMode = "x-ray";
+					if (entity.type === "assettype") {
+						var ids = [];
+						for (var i = 0; i < entity.children.length; i++) {
+							id = parseInt(entity.children[i].id);
+							ids.push(id);
+						}
+						viewer.setState(xState.HIGHLIGHTED, ids);
+					}
+					else {
+						viewer.setState(xState.HIGHLIGHTED, [id]);
+					}
+					viewer.zoomTo(id);
+					keepTarget = true;
+				}
+			});
+
+
+			//viewer set up
+			var check = xViewer.check();
+			if (check.noErrors) {
+				//alert('WebGL support is OK');
+				viewer = new xViewer("viewer-canvas");
+				viewer.background = [249, 249, 249, 255];
+				viewer.on("mouseDown", function (args) {
+					if (!keepTarget) viewer.setCameraTarget(args.id);
+				});
+				viewer.on("pick", function (args) {
+					browser.activateEntity(args.id);
+					viewer.renderingMode = "normal";
+					viewer.resetStates();
+					keepTarget = false;
+				});
+				viewer.on("dblclick", function (args) {
+					viewer.resetStates();
+					viewer.renderingMode = "x-ray";
+					var id = args.id;
+					viewer.setState(xState.HIGHLIGHTED, [id]);
+					viewer.zoomTo(id);
+					keepTarget = true;
+				});
+
+				viewer.load("/data/@Model.FileData");
+				browser.load("/data/@Model.FileJson");
+
+				//var cube = new xNavigationCube();
+				//viewer.addPlugin(cube);
+
+				viewer.start();
+			}
+			else {
+				alert("WebGL support is unsufficient");
+				var msg = document.getElementById("msg");
+				msg.innerHTML = "";
+				for (var i in check.errors) {
+					if (check.errors.hasOwnProperty(i)) {
+						var error = check.errors[i];
+						msg.innerHTML += "<div style='color: red;'>" + error + "</div>";
+					}
+				}
+			}
+		});
+	</script>
+</head>
+<body>
+@if (Model.FileData == null)
+{
+	<div class='container body-content'>
+		<h2>Модель не загружена в систему...</h2>
+	</div>
+}
+else {
+	<div style='position: relative; height: 100%'>
+		<div id="viewer-container">
+			<canvas id="viewer-canvas"></canvas>
+			<div style="position: absolute; left: 5px; top: 5px; padding: 5px;"
+			     id="toolbar"
+			     class="ui-widget-header ui-corner-all">
+				<button id="btnClip">Вырезать</button>
+				<button id="btnUnclip">По умолчанию</button>
+			</div>
+		</div>
+		<div id="semantic-model-container"
+		     class="noselect">
+			<div id="semantic-model">
+				<h3>Пространственная структура</h3>
+				<div class="no-overflow">
+					<div id="structure"
+					     class="semantic-model-tree"></div>
+				</div>
+				<h3>Типы</h3>
+				<div class="no-overflow">
+					<div id="assetTypes"
+					     class="semantic-model-tree"></div>
+				</div>
+				<h3>Системы</h3>
+				<div class="no-overflow">
+					<div id="systems"
+					     class="semantic-model-tree"></div>
+				</div>
+				<h3>Зоны</h3>
+				<div class="no-overflow">
+					<div id="zones"
+					     class="semantic-model-tree"></div>
+				</div>
+			</div>
+		</div>
+		<div id="semantic-descriptive-info-container">
+			<div id="semantic-descriptive-info">
+				<h3 id="attrprop-header">Свойства и атрибуты </h3>
+				<div class="no-overflow-y">
+					<div id="attrprop"></div>
+				</div>
+				<h3>Назначения</h3>
+				<div class="no-overflow">
+					<div id="assignments"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+</body>

@@ -1,0 +1,159 @@
+﻿<Window x:Class="SmartHouse_Control.UI.main_menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SmartHouse_Control.UI"
+        mc:Ignorable="d"
+        Title="SmartHouse Control" Height="450" Width="800" Icon="/SmartHouse_Control;component/Resources/main_ico.png"
+        Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
+    <Window.Resources>
+        <Storyboard x:Key="OnMouseEnter_activate_on">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"
+                                           Storyboard.TargetName="window_personal">
+                <EasingDoubleKeyFrame KeyTime="0" Value="125" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                           Storyboard.TargetName="window_personal">
+                <EasingDoubleKeyFrame KeyTime="0" Value="125" />
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                              Storyboard.TargetName="window_personal">
+                <EasingThicknessKeyFrame KeyTime="0" Value="134.688,186.591,0,0" />
+            </ThicknessAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)"
+                                           Storyboard.TargetName="textBlock">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Bold</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                          Storyboard.TargetName="textBlock">
+                <EasingColorKeyFrame KeyTime="0" Value="Red" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseEnter_activate_room">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                          Storyboard.TargetName="textBlock1">
+                <EasingColorKeyFrame KeyTime="0" Value="Red" />
+            </ColorAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)"
+                                           Storyboard.TargetName="textBlock1">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Bold</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"
+                                           Storyboard.TargetName="window_room">
+                <EasingDoubleKeyFrame KeyTime="0" Value="125" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                           Storyboard.TargetName="window_room">
+                <EasingDoubleKeyFrame KeyTime="0" Value="125" />
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                              Storyboard.TargetName="window_room">
+                <EasingThicknessKeyFrame KeyTime="0" Value="332.552,14.609,0,0" />
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseEnter_activate_filter">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                          Storyboard.TargetName="textBlock2">
+                <EasingColorKeyFrame KeyTime="0" Value="Red" />
+            </ColorAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)"
+                                           Storyboard.TargetName="textBlock2">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Bold</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"
+                                           Storyboard.TargetName="window_filters">
+                <EasingDoubleKeyFrame KeyTime="0" Value="125" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                           Storyboard.TargetName="window_filters">
+                <EasingDoubleKeyFrame KeyTime="0" Value="125" />
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                              Storyboard.TargetName="window_filters">
+                <EasingThicknessKeyFrame KeyTime="0" Value="538.355,184.174,0,0" />
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="window_personal">
+            <BeginStoryboard x:Name="OnMouseEnter_activate_on_BeginStoryboard"
+                             Storyboard="{StaticResource OnMouseEnter_activate_on}" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="window_personal">
+            <RemoveStoryboard BeginStoryboardName="OnMouseEnter_activate_on_BeginStoryboard" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="window_room">
+            <BeginStoryboard x:Name="OnMouseEnter_activate_room_BeginStoryboard"
+                             Storyboard="{StaticResource OnMouseEnter_activate_room}" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="window_room">
+            <RemoveStoryboard BeginStoryboardName="OnMouseEnter_activate_room_BeginStoryboard" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="window_filters">
+            <BeginStoryboard x:Name="OnMouseEnter_activate_filter_BeginStoryboard"
+                             Storyboard="{StaticResource OnMouseEnter_activate_filter}" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="window_filters">
+            <RemoveStoryboard BeginStoryboardName="OnMouseEnter_activate_filter_BeginStoryboard" />
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Window.Background>
+        <ImageBrush ImageSource="/SmartHouse_Control;component/Resources/bck.jpg" />
+    </Window.Background>
+
+    <Grid x:Name="grid">
+        <Image x:Name="window_personal" Margin="144.022,204.841,0,0"
+               Source="/SmartHouse_Control;component/Resources/personal_page.ico" Stretch="Fill" Height="100"
+               VerticalAlignment="Top" HorizontalAlignment="Left" Width="100"
+               MouseLeftButtonDown="Window_personal_MouseLeftButtonDown" />
+
+        <Rectangle Fill="#FF191919" Stroke="Black" Height="31.276" VerticalAlignment="Bottom" />
+        <Image Source="/SmartHouse_Control;component/Resources/exit.png" Stretch="Fill" Height="31.276"
+               VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="34" Margin="0,0,1,0"
+               MouseLeftButtonDown="Image_MouseLeftButtonDown" />
+        <Path Data="M492.66667,0 L492.66667,31.276" Fill="#FFFFF9F9" Margin="692.274,0,0,0" Stretch="Fill"
+              Stroke="White" Height="31.276" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="1" />
+        <Path Data="M492.66667,0 L492.66667,31.276" Fill="#FFFFF9F9" Margin="746,0,0,0" Stretch="Fill" Stroke="White"
+              HorizontalAlignment="Left" Width="1" Height="31.276" VerticalAlignment="Bottom" />
+        <Image x:Name="window_room" Margin="343.855,35.276,0,0"
+               Source="/SmartHouse_Control;component/Resources/home.png" Stretch="Fill" Height="100"
+               VerticalAlignment="Top" HorizontalAlignment="Left" Width="100"
+               MouseLeftButtonDown="Window_room_MouseLeftButtonDown" />
+        <Image x:Name="window_filters" Margin="547.855,204.841,0,0"
+               Source="/SmartHouse_Control;component/Resources/funnel.png" Stretch="Fill" Height="100"
+               VerticalAlignment="Top" HorizontalAlignment="Left" Width="100"
+               MouseLeftButtonDown="Window_filters_MouseLeftButtonDown" />
+        <TextBlock x:Name="textBlock" Margin="138.438,309.174,0,0" Text="Личный кабинет" Foreground="#FFF9DDDD"
+                   FontSize="14" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="117"
+                   MouseLeftButtonDown="Window_personal_MouseLeftButtonDown" />
+        <TextBlock x:Name="textBlock1" Margin="365.688,139.609,0,0" Text="Комната" Foreground="#FFF9DDDD" FontSize="14"
+                   Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="58.333"
+                   MouseLeftButtonDown="Window_room_MouseLeftButtonDown" />
+        <TextBlock x:Name="textBlock2" Margin="527,309,0,0" Text="Данные и управление" Foreground="#FFF9DDDD"
+                   FontSize="14" Height="21" VerticalAlignment="Top" HorizontalAlignment="Left" Width="158"
+                   MouseLeftButtonDown="Window_filters_MouseLeftButtonDown" />
+        <Grid HorizontalAlignment="Center" Height="31" Margin="298,0,308,0" VerticalAlignment="Bottom" Width="188">
+            <TextBlock x:Name="room_name" Margin="17,0,10,0" Text="Название комнаты" Foreground="White" FontSize="16"
+                       Height="27" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="31" Margin="688,385,0,0" VerticalAlignment="Top" Width="54">
+            <TextBlock x:Name="clock" Margin="10,0,0,10" TextWrapping="Wrap" Text="23.59" Foreground="White"
+                       FontSize="14" HorizontalAlignment="Center" Width="34" Height="18" VerticalAlignment="Center" />
+        </Grid>
+
+    </Grid>
+</Window>

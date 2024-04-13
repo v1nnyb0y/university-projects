@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="63cb379504394f3287c8c3b2a36b672a" Name="Diagram1">
+        <EntityTypeShape EntityType="QQContext.Access" Width="1.5" PointX="12" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QQContext.Address" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QQContext.Building" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QQContext.File" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QQContext.Model" Width="1.5" PointX="10.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QQContext.Option" Width="1.5" PointX="15" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QQContext.Person" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="QQContext.Quantity" Width="1.5" PointX="12.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QQContext.Room" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QQContext.RoomModel" Width="1.5" PointX="7.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QQContext.Sensor" Width="1.5" PointX="9.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QQContext.Sensor_Type" Width="1.5" PointX="7.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QQContext.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QQContext.Thing" Width="1.5" PointX="12.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QQContext.Thing_Type" Width="1.5" PointX="8.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QQContext.User" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="QQContext.UserRoom" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="QQContext.FK_Access_UserRoom" ManuallyRouted="false" />
+        <AssociationConnector Association="QQContext.FK_Building_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="QQContext.FK_Person_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="QQContext.FK_Room_Building" ManuallyRouted="false" />
+        <AssociationConnector Association="QQContext.FK_Model_Thing_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="QQContext.FK_Thing_Model" ManuallyRouted="false" />
+        <AssociationConnector Association="QQContext.FK_Option_Quantity" ManuallyRouted="false" />
+        <AssociationConnector Association="QQContext.FK_Option_Sensor" ManuallyRouted="false" />
+        <AssociationConnector Association="QQContext.FK_User_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="QQContext.FK_RoomModel_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="QQContext.FK_UserRoom_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="QQContext.FK_Sensor_RoomModel" ManuallyRouted="false" />
+        <AssociationConnector Association="QQContext.FK_Thing_RoomModel" ManuallyRouted="false" />
+        <AssociationConnector Association="QQContext.FK_Sensor_Sensor_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="QQContext.FK_Sensor_Thing" ManuallyRouted="false" />
+        <AssociationConnector Association="QQContext.FK_UserRoom_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QQContext.Time_Series" Width="1.5" PointX="17.25" PointY="5" />
+        <AssociationConnector Association="QQContext.FK_TIme_Series_Option" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

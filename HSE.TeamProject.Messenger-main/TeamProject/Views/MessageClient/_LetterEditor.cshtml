@@ -1,0 +1,48 @@
+﻿@model TeamProject.Models.LetterEditorModel
+
+<div>
+    @Html.LabelFor(m => m.Title, "Заголовок")
+    <br />
+    @Html.TextBoxFor(m => m.Title)
+    <br /><br />
+    @Html.LabelFor(m => m.Text, "Текст")
+    <br />
+    @Html.TextAreaFor(m => m.Text)
+    <br /><br />
+    @Html.LabelFor(m => m.Receivers, "Получатели")
+    <br />
+    @Html.TextBoxFor(m => m.Receivers)
+    <br /><br />
+    <p><input type="button" id="WriteLetter" value="Отправить письмо" /></p>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#WriteLetter").click(writeLetter);
+    });
+
+    function writeLetter() {
+        var title = $("#Title").val();
+        var text = $("#Text").val();
+        var receiversAll = $("#Receivers").val();
+        var sender = @Model.SenderId;
+        var receivers = receiversAll.split(" ");
+        var model = {
+            Receivers: receivers,
+            Title: title,
+            Text: text,
+            SenderId: sender
+        };
+        $.ajax({
+            url: "@Url.Action("WriteLetter", "MessageClient")",
+            type: "POST",
+            dataType: "json",
+            data: model,
+            success: function (data) {
+                if (data === true) {
+                    location.reload();
+                }
+            }
+        });
+    }
+</script>

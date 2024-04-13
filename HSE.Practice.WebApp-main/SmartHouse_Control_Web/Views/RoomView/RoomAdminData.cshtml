@@ -1,0 +1,45 @@
+﻿@model Provider.CurrentSession.Room
+
+<div class='container body-content'>
+	<hr />
+	<div>
+		<h2 class='text-center'>Пользователи</h2>
+		<table class='table text-center' cols='2'>
+			<tr class='text-uppercase'>
+				<th class='text-center'>
+					<p>ФИО</p>
+				</th>
+				<th class='text-center'>
+					<p>Уровень доступа</p>
+				</th>
+				<th class='text-center'>
+					
+				</th>
+			</tr>
+
+			@for(int i = 0; i < Model.ListUsersInRoom.Count; ++i)
+			{
+				<tr>
+					<td>
+						<p>
+							@Model.ListUsersInRoom[i].FIO
+						</p>
+					</td>
+					<td>
+						<p>
+							@Model.ListUsersInRoom[i].Access
+						</p>
+					</td>
+					<td>
+						<p>
+							@Html.ActionLink("Изменить доступ пользователя", "EditAccess", "Account", new { userId = i, roomId = Model.Index, user = Model.ListUsersInRoom[i] }, null) |
+							@Html.ActionLink("Удалить пользователя", "DeleteUser", "Account", new { userId = i, roomId = Model.Index }, null)
+						</p>
+					</td>
+				</tr>
+			}
+		</table>
+	</div>
+</div>
+
+

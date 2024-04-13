@@ -1,0 +1,206 @@
+﻿@model Provider.CurrentSession.Room
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+	<script src="~/Scripts/Libs/gl-matrix.js"></script>
+	<script src="~/Scripts/Libs/webgl-utils.js"></script>
+	<script type="text/javascript" src="~/Scripts/Viewer/xbim-product-type.debug.js"></script>
+	<script type="text/javascript" src="~/Scripts/Viewer/xbim-state.debug.js"></script>
+	<script type="text/javascript" src="~/Scripts/Viewer/xbim-shaders.debug.js"></script>
+	<script type="text/javascript" src="~/Scripts/Viewer/xbim-model-geometry.debug.js"></script>
+	<script type="text/javascript" src="~/Scripts/Viewer/xbim-model-handle.debug.js"></script>
+	<script type="text/javascript" src="~/Scripts/Viewer/xbim-binary-reader.debug.js"></script>
+	<script type="text/javascript" src="~/Scripts/Viewer/xbim-triangulated-shape.debug.js"></script>
+	<script type="text/javascript" src="~/Scripts/Viewer/xbim-viewer.debug.js"></script>
+
+	<script src="~/Scripts/Plugins/NavigationCube/xbim-navigation-cube-shaders.debug.js"></script>
+	<script src="~/Scripts/Plugins/NavigationCube/xbim-navigation-cube.debug.js"></script>
+	<script src="~/Scripts/Plugins/NavigationCube/xbim-navigation-cube-textures.debug.js"></script>
+
+	<style>
+		html, body {
+			height: 100%;
+			padding: 0;
+			margin: 0;
+		}
+
+		canvas {
+			display: block;
+			border: none;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
+</head>
+
+<body>
+	@if (Model.FileData == null)
+	{
+		<h2>Модель не загружена в систему...</h2>
+	}
+	else
+	{
+		<div class='row'>
+			<canvas style='float: left'
+					id='viewerModel'
+					height='600'
+					width='700'></canvas>
+			<div class='text-center col-md-offset-1'
+			     style='font-size: 10px'>
+				<div>
+					<button onclick="viewer.navigationMode = 'orbit'">Установить орбиту</button>
+					<button onclick="viewer.navigationMode = 'free-orbit'">Свободная орбита</button>
+					<button onclick="viewer.navigationMode = 'zoom'">Масштабирование</button>
+				</div>
+				<hr />
+				<div>
+					<button onclick="viewer.show('front')">Вид спереди</button>
+					<button onclick="viewer.show('back')">Вид сзади</button>
+					<button onclick="viewer.show('top')">Вид сверху</button>
+					<button onclick="viewer.show('bottom')">Вид снизу</button>
+					<button onclick="viewer.show('left')">Вид слева</button>
+					<button onclick="viewer.show('right')">Вид справа</button>
+				</div>
+				<hr />
+				<div>
+					<button onclick="viewer.camera = 'perspective';">
+						Обычный вид
+					</button>
+					<button onclick="viewer.camera = 'orthogonal'">
+						Ортогональный вид
+					</button>
+				</div>
+				<hr />
+				<div>
+					<button onclick="makeWallsRed()">
+						Все стены: красный
+					</button>
+					<button onclick="hideWalls()">
+						Скрыть все стены
+					</button>
+					<button onclick="resetWalls()">
+						Восстановить стены
+					</button>
+					<button onclick="selectAllWalls()">
+						Выбрать все стены
+					</button>
+				</div>
+				<hr />
+				<div>
+					<form>
+						<label>
+							<input type="radio"
+								   name="radioHiding"
+								   value="hideOne" /> Скрыть по нажатию
+						</label>
+						<label>
+							<input type="radio"
+								   name="radioHiding"
+								   value="hideType" /> Скрыть по типу
+						</label>
+						<label>
+							<input type="radio"
+								   name="radioHiding"
+								   value="noHide" /> Не скрывать
+						</label>
+					</form>
+					<button onclick="for (var i in types) { if (types[i] !== types.IFCSPACE) { viewer.setState(states.UNDEFINED, types[i]) } }">
+						Показать все
+					</button>
+					<button onclick="for (var i in types) { if (types[i] !== types.IFCSPACE) { viewer.setStyle(1, types[i]) } }">
+						Сделать все "Стеклянным"
+					</button>
+					<button onclick="for (var i in types) { if (types[i] !== types.IFCSPACE) { viewer.setStyle(2, types[i]) } }">
+						Сделать все белым
+					</button>
+					<button onclick="for (var i in types) { if (types[i] !== types.IFCSPACE) { viewer.setStyle(xState.UNSTYLED, types[i]) } }">
+						По умолчанию
+					</button>
+				</div>
+				<hr />
+				<div>
+					<label>
+						<input type="radio"
+							   name="radioRenderingMode"
+							   value="normal"
+							   checked="checked"
+							   onchange="viewer.renderingMode = 'normal';" /> Нормальный вид
+					</label>
+					<label>
+						<input type="radio"
+							   name="radioRenderingMode"
+							   value="xray"
+							   onchange="viewer.renderingMode = 'x-ray';" /> X-Ray
+					</label>
+				</div>
+			</div>
+			<script type="text/javascript">
+		var viewer = new xViewer("viewerModel");
+		viewer.background = [0, 0, 0];
+
+		viewer.on("mouseDown",
+			function(arg) {
+				viewer.setCameraTarget(arg.id);
+			});
+
+		viewer.load('/data/@Model.FileData');
+		viewer.setCameraPosition([-15000, -15000, -15000]);
+		viewer.start();
+
+		var types = xProductType;
+		var states = xState;
+		viewer.defineStyle(0, [255, 0, 0, 255]); //red
+		viewer.defineStyle(1, [0, 0, 255, 100]); //semitransparent blue
+		viewer.defineStyle(2, [255, 255, 255, 255]); //white
+		var makeWallsRed = function() {
+			viewer.setStyle(0, types.IFCWALLSTANDARDCASE);
+			viewer.setStyle(0, types.IFCCURTAINWALL);
+			viewer.setStyle(0, types.IFCWALL);
+		}
+		var selectAllWalls = function() {
+			viewer.setState(states.HIGHLIGHTED, types.IFCWALLSTANDARDCASE);
+			viewer.setState(states.HIGHLIGHTED, types.IFCCURTAINWALL);
+			viewer.setState(states.HIGHLIGHTED, types.IFCWALL);
+		}
+		var hideWalls = function() {
+			viewer.setState(states.HIDDEN, types.IFCWALLSTANDARDCASE);
+			viewer.setState(states.HIDDEN, types.IFCCURTAINWALL);
+			viewer.setState(states.HIDDEN, types.IFCWALL);
+		}
+		var resetWalls = function() {
+			viewer.setState(states.UNDEFINED, types.IFCWALLSTANDARDCASE);
+			viewer.setState(states.UNDEFINED, types.IFCCURTAINWALL);
+			viewer.setState(states.UNDEFINED, types.IFCWALL);
+		}
+
+		viewer.on("pick",
+			function(args) {
+				var id = args.id;
+				var radios = document.getElementsByName("radioHiding");
+				for (var i in radios) {
+					if (radios.hasOwnProperty(i)) {
+						var radio = radios[i];
+						if (radio.checked) {
+							var val = radio.value;
+							if (val === "noHiding") return;
+							if (val === "hideOne") viewer.setState(states.HIDDEN, [id]);
+							if (val === "hideType") {
+								var type = viewer.getProductType(id);
+								viewer.setState(states.HIDDEN, type);
+							}
+							break;
+						}
+					}
+				}
+
+				//viewer.zoomTo(id);
+			});
+
+		var cube = new xNavigationCube();
+		viewer.addPlugin(cube);
+			</script>
+		</div>
+	}
+
+</body>

@@ -1,0 +1,20 @@
+﻿/**
+ * Стили ObjectTileView темы.
+ * Контрол ObjectTileView.
+ */
+
+.@{otvTileArea},
+.@{otvPageSelectArea},
+.@{otvTile},
+.@{otvPageBtn} {
+  background: @otvTileBackground !important;
+}
+.@{otvSelectedPageBtn} {
+  background: @otvSelectedBtnColor !important;
+  cursor: default;
+  &:hover {
+    color: #7ba7d9 !important;
+  }
+}
+
+@import '_Settings.less';

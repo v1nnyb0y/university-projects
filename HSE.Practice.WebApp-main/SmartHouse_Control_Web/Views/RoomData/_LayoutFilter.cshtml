@@ -1,0 +1,124 @@
+﻿@model Provider.CurrentSession.Room
+
+	<div class='col-md-4'>
+		@using (Html.BeginForm())
+		{
+			@Html.AntiForgeryToken()
+			@Html.HiddenFor(model => model.RoomId)
+			<div class="form-group">
+				@Html.LabelFor(model => model.Filters.Turning, htmlAttributes: new { @class = "control-label col-md-6" })
+				<div class="col-md-offset-6">
+					@Html.DropDownListFor(model => model.Filters.Turning, new List<SelectListItem>()
+																			  {
+																				  new SelectListItem()
+																					  {
+																						  Text = "Все"
+																					  },
+																				  new SelectListItem()
+																					  {
+																						  Text = "Все включенные"
+																					  },
+																				  new SelectListItem()
+																					  {
+																						  Text = "Все выключенные"
+																					  }
+																			  })
+				</div>
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(model => model.Filters.Temperature, htmlAttributes: new { @class = "control-label col-md-6" })
+				<div class="col-md-offset-8">
+					<div class="checkbox">
+						@Html.EditorFor(model => model.Filters.Temperature)
+					</div>
+				</div>
+			</div>
+			<br />
+			<div class="form-group">
+				@Html.LabelFor(model => model.Filters.Presser, htmlAttributes: new { @class = "control-label col-md-6" })
+				<div class="col-md-offset-8">
+					<div class="checkbox">
+						@Html.EditorFor(model => model.Filters.Presser)
+					</div>
+				</div>
+			</div>
+			<br />
+			<div class="form-group">
+				@Html.LabelFor(model => model.Filters.Lightning, htmlAttributes: new { @class = "control-label col-md-6" })
+				<div class="col-md-offset-8">
+					<div class="checkbox">
+						@Html.EditorFor(model => model.Filters.Lightning)
+					</div>
+				</div>
+			</div>
+			<br />
+			<div class="form-group">
+				@Html.LabelFor(model => model.Filters.Visual, htmlAttributes: new { @class = "control-label col-md-6" })
+				<div class="col-md-offset-8">
+					<div class="checkbox">
+						@Html.EditorFor(model => model.Filters.Visual)
+					</div>
+				</div>
+			</div>
+			<br />
+			<div class="form-group">
+				@Html.LabelFor(model => model.Filters.Movement, htmlAttributes: new { @class = "control-label col-md-6" })
+				<div class="col-md-offset-8">
+					<div class="checkbox">
+						@Html.EditorFor(model => model.Filters.Movement)
+					</div>
+				</div>
+			</div>
+			<br />
+			<div class="form-group">
+				@Html.LabelFor(model => model.Filters.Gas, htmlAttributes: new { @class = "control-label col-md-6" })
+				<div class="col-md-offset-8">
+					<div class="checkbox">
+						@Html.EditorFor(model => model.Filters.Gas)
+					</div>
+				</div>
+			</div>
+			<br />
+			<div class="form-group">
+				@Html.LabelFor(model => model.Filters.Rain, htmlAttributes: new { @class = "control-label col-md-6" })
+				<div class="col-md-offset-8">
+					<div class="checkbox">
+						@Html.EditorFor(model => model.Filters.Rain)
+					</div>
+				</div>
+			</div>
+			<br />
+			<div class="form-group">
+				@Html.LabelFor(model => model.Filters.Time, htmlAttributes: new { @class = "control-label col-md-6" })
+				<div class="col-md-offset-8">
+					<div class="checkbox">
+						@Html.EditorFor(model => model.Filters.Time)
+					</div>
+				</div>
+			</div>
+			<br />
+			<div class="form-group">
+				@Html.LabelFor(model => model.Filters.Connection, htmlAttributes: new { @class = "control-label col-md-6" })
+				<div class="col-md-offset-8">
+					<div class="checkbox">
+						@Html.EditorFor(model => model.Filters.Connection)
+					</div>
+				</div>
+			</div>
+			<br />
+			<div class="form-group">
+				@Html.LabelFor(model => model.Filters.Open, htmlAttributes: new { @class = "control-label col-md-6" })
+				<div class="col-md-offset-8">
+					<div class="checkbox">
+						@Html.EditorFor(model => model.Filters.Open)
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input type="submit" value="Применить фильтры" class="btn btn-default" style='background-color: #2DC354' />
+				</div>
+			</div>
+		}
+	</div>

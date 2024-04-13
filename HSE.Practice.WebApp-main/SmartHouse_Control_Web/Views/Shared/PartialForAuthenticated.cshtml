@@ -1,0 +1,139 @@
+﻿@using Provider.CurrentSession
+<link rel='stylesheet'
+      type='text/css'
+      href='~/Content/style.css' />
+<link rel='stylesheet'
+      type='text/css'
+      href='~/Content/left-nav-style.css' />
+<input type='checkbox'
+       id='nav-toggle'
+       hidden />
+
+<div class='nav'>
+	<label for='nav-toggle'
+	       class='nav-toggle'
+	       onclick>
+	</label>
+	<h2> SMC </h2>
+	<ul>
+		<li>
+			<a href='@Url.Action(
+			                     "Index",
+				         "Account")'>
+				<img width='25'
+					 height='25'
+					 src='~/Resources/personal_page.ico' />
+				Личный кабинет
+			</a>
+		</li>
+
+		<li>
+			<h3>
+				<img width="25"
+				     height="25"
+				     src="~/Resources/home.png" />
+				Комнаты
+			</h3>
+			@for (int i = 0; i < ((Provider.CurrentProvider)Session["CurrUsr"]).User.Rooms.Count; ++i)
+			{
+				switch (((Provider.CurrentProvider)Session["CurrUsr"]).User.Rooms[i].Access)
+				{
+					case "Администратор":
+						{
+							<a href="@Url.Action("Index", "RoomView", new { roomId = i})"
+							   style="text-indent: 1.5em">
+								Admin//@(((Provider.CurrentProvider)Session["CurrUsr"]).User.Rooms[i].Name)
+							</a>
+							break;
+						}
+					case "Полный доступ":
+						{
+							<a href="@Url.Action("Index", "RoomView", new { roomId = i})"
+							   style="text-indent: 1.5em">
+								Full//@(((Provider.CurrentProvider)Session["CurrUsr"]).User.Rooms[i].Name)
+							</a>
+							break;
+						}
+					case "Частичный доступ":
+						{
+							<a href="@Url.Action("Index", "RoomView", new { roomId = i})"
+							   style="text-indent: 1.5em">
+								Partly//@(((Provider.CurrentProvider)Session["CurrUsr"]).User.Rooms[i].Name)
+							</a>
+							break;
+						}
+				}
+			}
+		</li>
+		
+	@if (((Provider.CurrentProvider) Session["CurrUsr"]).User.Access == "Администратор") {
+		<li>
+			<h3>
+				<img width="25"
+				     height="25"
+				     src="~/Resources/funnel.png" />
+				Данные и управление
+			</h3>
+			@for (int i = 0;
+			      i < ((Provider.CurrentProvider) Session["CurrUsr"]).User.Rooms.Count;
+			      ++i) {
+				switch (((Provider.CurrentProvider) Session["CurrUsr"]).User.Rooms[i].Access) {
+					case "Администратор":
+						{
+							<a href="@Url.Action(
+							                     "Index",
+								         "RoomData",
+								         new
+									         {
+										         roomId = i
+									         })"
+							   style="text-indent: 1.5em">
+								@(
+									   ((Provider.CurrentProvider) Session["CurrUsr"]).User.Rooms[i].Name)
+							</a>
+							break;
+						}
+					case "Полный доступ":
+						{
+							<a href="@Url.Action(
+							                     "Index",
+								         "RoomData",
+								         new
+									         {
+										         roomId = i
+									         })"
+							   style="text-indent: 1.5em">
+								@(
+									   ((Provider.CurrentProvider) Session["CurrUsr"]).User.Rooms[i].Name)
+							</a>
+							break;
+						}
+				}
+			}
+		</li>
+	}
+
+		
+			<li>
+				<a >
+					<img width='25'
+					     height='25'
+					     src='~/Resources/human_changing.ico' />
+					Конструктор запросов
+				</a>
+			</li>
+		
+
+		<li>
+			<a href='@Url.Action(
+
+								 "SignOut",
+				         "Home")'>
+				<img src='~/Resources/logout.png'
+					 width='25'
+					 height='25' />
+				Выход
+			</a>
+		</li>
+	</ul>
+</div>

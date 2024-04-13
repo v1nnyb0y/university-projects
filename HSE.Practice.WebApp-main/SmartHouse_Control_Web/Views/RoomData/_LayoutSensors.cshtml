@@ -1,0 +1,117 @@
+﻿@model Provider.CurrentSession.Room
+
+<div class='col-md-offset-4'>
+	<h2 class='text-center'>Данные</h2>
+
+	<table class='table text-center'
+	       cols='4'>
+		<tr class='text-uppercase'>
+			<th class='text-center'>
+				<p>Датчик</p>
+			</th>
+			<th class='text-center'>
+				<p>Семейство</p>
+			</th>
+			<th class='text-center'>
+				<p>Состояние</p>
+			</th>
+			<th class='text-center'>
+				<p>Показатель (Последний)</p>
+			</th>
+			<th class='text-center'>
+
+			</th>
+		</tr>
+
+		@for(int i = 0; i < Model.ListSensors.Count; ++i)
+		{
+			if (!Model.Filters.Time &&
+				 Model.ListSensors[i].Fam == "Датчик времени") {
+				continue;
+			}
+			if (!Model.Filters.Open &&
+			    Model.ListSensors[i].Fam == "Датчик открытия") {
+				continue;
+			}
+			if (!Model.Filters.Connection &&
+			    Model.ListSensors[i].Fam == "Датчик связи") {
+				continue;
+			}
+			if (!Model.Filters.Time &&
+			    Model.ListSensors[i].Fam == "Датчик времени") {
+				continue;
+			}
+			if (!Model.Filters.Rain &&
+			    Model.ListSensors[i].Fam == "Датчик дождя") {
+				continue;
+			}
+			if (!Model.Filters.Gas &&
+			    Model.ListSensors[i].Fam == "Датчик газа") {
+				continue;
+			}
+			if (!Model.Filters.Movement &&
+			    Model.ListSensors[i].Fam == "Датчик движения") {
+				continue;
+			}
+			if (!Model.Filters.Visual &&
+			    Model.ListSensors[i].Fam == "Визуализация") {
+				continue;
+			}
+			if (!Model.Filters.Lightning &&
+			    Model.ListSensors[i].Fam == "Освещение") {
+				continue;
+			}
+			if (!Model.Filters.Presser &&
+			    Model.ListSensors[i].Fam == "Датчик давление") {
+				continue;
+			}
+			if (!Model.Filters.Temperature &&
+			    Model.ListSensors[i].Fam == "Термодатчик") {
+				continue;
+			}
+			if (Model.Filters.Turning == "Все включенные" &&
+			    Model.ListSensors[i].State == "Выключен") {
+				continue;
+			}
+			if (Model.Filters.Turning == "Все выключенные" &&
+			    Model.ListSensors[i].State == "Включен") {
+				continue;
+			}
+			<tr>
+				<td>
+					<p>
+						@Model.ListSensors[i].Name
+					</p>
+				</td>
+				<td>
+					<p>
+						@Model.ListSensors[i].Fam
+					</p>
+				</td>
+				<td>
+					<p>@Model.ListSensors[i].State</p>
+				</td>
+				<td>
+					<p>
+						@Model.ListSensors[i].Data
+					</p>
+				</td>
+				<td>
+				@if (Model.ListSensors[i].State == "Включен")
+						{
+					<p>
+						@Html.ActionLink("Изменить значение датчика", "ChangeValue", new { sensorId = i, oldValue = Model.ListSensors[i].Data, roomId = Model.Index, name = Model.ListSensors[i].Name }) |
+						@Html.ActionLink("Выключить датчик", "TurnOn", new { sensorId = i, turnOn = false, roomId = Model.Index })
+					</p>
+						}
+						else
+						{
+					<p>
+							@Html.ActionLink("Включить датчик", "TurnOn", new { sensorId = i, turnOn = true, roomId = Model.Index })
+					</p>
+						}
+				</td>
+			</tr>
+		}
+	</table>
+</div>

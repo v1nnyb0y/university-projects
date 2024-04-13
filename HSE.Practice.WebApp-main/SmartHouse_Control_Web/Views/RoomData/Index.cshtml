@@ -1,0 +1,45 @@
+﻿@model Provider.CurrentSession.Room
+@{
+	Layout = "~/Views/Shared/MasterPage.cshtml";
+}
+
+<div class='container body-content'>
+	<h2>Данные с регулируемых датчиков</h2>
+	<div class='row'>
+		<div class='col-md-offset-9 text-right'
+			 style='font-size: 17px; float: right'>
+			@using (Html.BeginForm("Upload", "RoomData", new { roomId = Model.Index }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+			{
+				<input type="file" name="upload" class='btn btn-default' style="background-color: #2DC354" />
+				<input type="submit" value="Загрузить" class='btn btn-default' style="background-color: #2DC354" />
+			}| @Html.ActionLink(
+									   "Выгрузить отчет",
+						  "GetFile",
+						  new
+							  {
+								  roomId = Model.Index
+							  },
+						  new
+							  {
+								  @class = "btn btn-default",
+								  type = "submit",
+								  name = "bttn",
+								  style = "background-color: #2DC354",
+							  })
+		</div>
+	</div>
+	<hr />
+		@using (Html.BeginForm
+			(
+			 "Index",
+				"RoomData",
+				null,
+				FormMethod.Post))
+		{
+	<div class='row'>
+		@Html.Partial("_LayoutFilter", Model)
+		@Html.Partial("_LayoutSensors", Model)
+	</div>
+		}
+	</div>
+</div>

@@ -1,0 +1,44 @@
+﻿@using TeamProject.Enums
+@model TeamProject.Models.SignUpModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SignUp</title>
+</head>
+<body>
+    @using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
+    {
+        @Html.LabelFor(m => m.Name, "Имя")
+        <br />
+        @Html.TextBoxFor(m => m.Name)
+        <br /><br />
+        @Html.LabelFor(m => m.LastName, "Фамилия")
+        <br />
+        @Html.TextBoxFor(m => m.LastName)
+        <br /><br />
+        @Html.LabelFor(m => m.Email, "Почтовый адрес")
+        <br />
+        @Html.TextBoxFor(m => m.Email)
+        <br />
+        @Html.LabelFor(m => m.Roles, "Роли")
+        <br />
+        @Html.ListBoxFor(m => m.Roles, RoleEnumHelper.GetRolesList())
+        <br /><br />
+        @Html.LabelFor(m => m.Login, "Логин")
+        <br />
+        @Html.TextBoxFor(m => m.Login)
+        <br /><br />
+        @Html.LabelFor(m => m.Password, "Пароль")
+        <br />
+        @Html.PasswordFor(m => m.Password)
+        <p><input type="submit" value="Зарегистрироваться" /></p>
+    }
+</body>
+</html>

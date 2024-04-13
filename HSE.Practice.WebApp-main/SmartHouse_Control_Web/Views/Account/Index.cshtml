@@ -1,0 +1,138 @@
+﻿@model Provider.CurrentSession.User
+
+	<div class='container body-content'>
+
+		@{
+			ViewBag.Title = "Личный кабинет";
+			Layout = "~/Views/Shared/MasterPage.cshtml";
+		}
+		<h2>@ViewBag.Title.</h2>
+
+		<p class="text-success">@ViewBag.StatusMessage</p>
+		<div class='row'>
+			<h4 class='col-md-6'>Просмотр параметров учетной записи</h4>
+			<div class='col-md-offset-9 text-right' style='font-size: 17px'>
+				@Html.ActionLink("Редактировать", "Edit", "Account") |
+				@Html.ActionLink("Отобразить", "Index", "Account")
+			</div>
+		</div>
+		<hr />
+		<div class='row'>
+			<div class='col-md-3'>
+				@if (Model?.Avatar != null)
+				{
+					<img src='@($"data:image/png;base64,{Convert.ToBase64String ( Model.Avatar)}")'
+					     ,
+					     width='256'
+					     height='256' />
+				}
+				else
+				{
+					<img src='~/Resources/base_avatar.png'
+					     height='256'
+					     width='256' />
+				}
+
+			</div>
+			<div class='col-md-7'>
+				<h2 class='text-center'>Личная информация</h2>
+				<dl class='col-md-offset-1' style='font-size: 17px; grid-template-columns: minmax(min-content, 1fr) auto; display: grid'>
+					<dt>
+						@Html.DisplayNameFor(
+						                     model => model.FIO)
+					</dt>
+					<dd style='padding: .5em 0;'>
+						@Html.DisplayFor(
+						                 model => model.FIO)
+					</dd>
+					<dt>
+						@Html.DisplayNameFor(
+						                     model => model.Access)
+					</dt>
+					<dd style='padding: .5em 0;'>
+						@Html.DisplayFor(
+						                 model => model.Access)
+					</dd>
+					<dt>
+						@Html.DisplayNameFor(
+						                     model => model.PhoneNumber)
+					</dt>
+					<dd style='padding: .5em 0;'>
+						@Html.DisplayFor(
+						                 model => model.PhoneNumber)
+					</dd>
+					<dt>
+						@Html.DisplayNameFor(
+						                     model => model.EMail)
+					</dt>
+
+					<dd style='padding: .5em 0;'>
+						@Html.DisplayFor(
+						                 model => model.EMail)
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<hr/>
+		<div>
+			<h2 class='text-center'>Дополнительная информация</h2>
+			<dl class='table' style='font-size: 17px; grid-template-columns: minmax(min-content, 1fr) auto; display: grid'>
+				<dt>
+					@Html.DisplayNameFor(
+					                     model => model.Address)
+				</dt>
+
+				<dd style='padding: .5em 0;'>
+					@Html.DisplayFor(
+					                 model => model.Address)
+				</dd>
+				<dt>
+					@Html.DisplayNameFor(
+					                     model => model.Organization)
+				</dt>
+
+				<dd style='padding: .5em 0;'>
+					@Html.DisplayFor(
+					                 model => model.Organization)
+				</dd>
+			</dl>
+		</div>
+		<hr/>
+		<div>
+			<h2 class='text-center'>Таблица доступов</h2>
+			<table class='table text-center' cols='2'>
+				<tr class='text-uppercase'>
+					<th class='text-center'>
+						<p>Помещение</p>
+					</th>
+					<th class='text-center'>
+						<p>Уровень доступа</p>
+					</th>
+				</tr>
+
+				@{
+					System.Diagnostics.Debug.Assert
+						(
+						 Model?.Rooms != null,
+							"Model?.Rooms != null"
+						);
+				}
+
+				@foreach (var room in Model?.Rooms)
+				{
+					<tr>
+						<td>
+							<p>
+								@room.Name
+							</p>
+						</td>
+						<td>
+							<p>
+								@room.Access
+							</p>
+						</td>
+					</tr>
+				}
+			</table>
+		</div>
+	</div>

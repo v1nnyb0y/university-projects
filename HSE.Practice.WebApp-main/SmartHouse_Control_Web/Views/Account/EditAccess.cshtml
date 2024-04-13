@@ -1,0 +1,87 @@
+﻿@model Provider.CurrentSession.Room.SmallUser
+
+@{
+    ViewBag.Title = "EditAccess";
+    Layout = "~/Views/Shared/MasterPage.cshtml";
+}
+
+@using (Html.BeginForm
+	(
+	 "EditAccess",
+		"Account",
+		"",
+		FormMethod.Post,
+		new
+			{
+				enctype = "multipart/form-data",
+				role = "form"
+			})) {
+	@Html.AntiForgeryToken()
+	<div class='container body-content'>
+		<h4 class='col-md-6'>Изменение доступа пользователя @Model.FIO</h4>
+		<div class='row'>
+			@Html.HiddenFor(model => model.UserId)
+			@Html.HiddenFor(model => model.RoomId)
+			@Html.HiddenFor(model => model.AddressId)
+			@Html.HiddenFor(model => model.FIO)
+			<div class='col-md-offset-9 text-right'
+				 style='font-size: 17px'>
+				<input class='btn btn-default'
+					   name='Bttn'
+					   style='background-color: #2DC354'
+					   type='submit'
+					   value='Сохранить' /> |
+				@Html.ActionLink(
+								 "Назад",
+					"Index",
+					"RoomView",
+					new
+						{
+							roomId = Model.RoomId
+						},
+					null)
+			</div>
+		</div>
+		<hr />
+		<div class='form-group'>
+			@Html.LabelFor(
+						   model => model.FIO,
+				new
+					{
+						@class = "control-label col-md-8"
+					})
+			<div class="col-md-offset-8">
+				@Html.DisplayFor(
+								 model => model.FIO)
+			</div>
+		</div>
+		<div class='form-group'>
+			@Html.LabelFor(
+						   model => model.Access,
+				new
+					{
+						@class = "control-label col-md-8"
+					})
+			<div class="col-md-offset-8">
+				@Html.DropDownListFor(
+									  model => model.Access,
+					new List<SelectListItem>()
+						{
+							new SelectListItem()
+								{
+									Text = "Полный доступ"
+								},
+							new SelectListItem()
+								{
+									Text = "Частичный доступ"
+								},
+							new SelectListItem()
+								{
+									Text = "Отсутствует доступ"
+								}
+						})
+			</div>
+		</div>
+	</div>
+}
+

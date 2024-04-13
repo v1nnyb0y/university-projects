@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		@ViewBag.Title - SmartHouse-Control
+	</title>
+
+	<meta content='text/html; charset=utf-8'
+		  http-equiv='Content-Type' />
+	<meta charset='utf-8' />
+	<meta content='width=device-width, initial-scale=1.0'
+		  name='viewport' />
+
+	<script src='https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js'>
+	</script>
+
+
+
+	@Styles.Render(
+				   "~/Content/css")
+	@Scripts.Render(
+
+					"~/bundles/modernizr")
+	@RenderBody()
+</head>
+<body>
+
+	@if (Session["CurrUsr"] != null)
+	{
+		@Html.Partial(
+					  "PartialForAuthenticated",
+			"Home")
+	}
+	<footer style='position: relative'>
+		<br />
+		<div class='bg-cl-white text-left'
+			 style='font-size: 12px'
+			 data-masonry='{ "itemSelector": ".grid-item" }'>
+			<div class='grid-item w2'>
+				<a aria-label='Go to Home Page'
+				   href='@Url.Action("Index", "Account")'
+				   target='_self'>
+					<svg>
+						<text font-size='20'
+							  font-style='italic'
+							  font-weight='bold'
+							  stroke='none'
+							  x='35'
+							  y='25'>
+							SmartHouse
+						</text>
+						<text font-size='20'
+							  font-style='italic'
+							  font-weight='bold'
+							  stroke='none'
+							  x='50'
+							  y='45'>
+							Control
+						</text>
+					</svg>
+				</a>
+			</div>
+			<div class='grid-item'>
+				<ul class='front-cl-black list-el-l'>
+					<li class='front-cl-gray h5'>
+						Program
+					</li>
+					<li>
+						<a aria-label='Go to Repository with program'
+						   class='front-cl-gray h5'
+						   href='https://github.com/KingOfExeptions/HSE.TechPractice'>
+							GitHub Repository
+						</a>
+					</li>
+					<li>
+						<a aria-label='Download documentation'
+						   class='front-cl-gray h5'
+						   href=''>
+							Documentation
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class='grid-item'>
+				<ul class='front-cl-black list-el-l'>
+					<li class='front-cl-gray h5'>
+						FreeCAD
+					</li>
+					<li>
+						<a aria-label='Go to FreeCAD webSite'
+						   class='front-cl-gray h5'
+						   href='https://www.freecadweb.org'>
+							FreeCAD Web-Site
+						</a>
+					</li>
+					<li>
+						<a aria-label='Go to FreeCAD wiki'
+						   class='front-cl-gray h5'
+						   href='https://www.freecadweb.org/wiki/Main_Page'>
+							FreeCAD WiKi
+						</a>
+					</li>
+					<li>
+						<a aria-label='Go to FreeCAD gitHub'
+						   class='front-cl-gray h5'
+						   href='https://github.com/FreeCAD'>
+							FreeCAD on GitHub
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class='grid-item'>
+				<ul class='front-cl-black list-el-l'>
+					<li class='front-cl-gray h5'>
+						Support
+					</li>
+					<li>
+						<a aria-label='Send me a letter'
+						   class='front-cl-gray h5'
+						   href='mailto:jdanov.vad1m@gmail.com'>
+							Send a letter
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class='bg-cl-gray text-left'
+			 style='font-size: 10px'>
+			<div>
+				<ul>
+					&copy; @DateTime.Now.Year SM-Control
+				</ul>
+			</div>
+		</div>
+	</footer>
+
+
+	@RenderSection("scripts", false)
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿@using TeamProject.Models
+@model TeamProject.Models.MessageClientModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MessageClient</title>
+</head>
+<body>
+    <p style="font-size:medium">@Model.CurrentProfile</pstyle="font-size:larger">
+    <p style="font-size:larger">Почтовый ящик</p>
+    @foreach (Letter letter in Model.Letters)
+    {
+        <p>От: @letter.Sender</p>
+        <p>Когда: @letter.DateAndTimeOfSending</p>
+        <p>Заголовок: @letter.Title</p>
+        <p>Сообщение: @letter.Text</p>
+        <p></p>
+    }
+    <p style="font-size:larger">Новое письмо</p>
+    @{
+        LetterEditorModel letterEditorModel = new LetterEditorModel
+        {
+            SenderId = Model.CurrentProfile.Id
+        };
+        Html.RenderPartial("_LetterEditor", letterEditorModel);
+    }
+</body>
+</html>

@@ -1,0 +1,112 @@
+﻿<div class="navbar navbar-fixed-top navbar-inverse">
+	<div class="container">
+		<div class="navbar-header">
+			<button class="navbar-toggle"
+					data-target=".navbar-collapse"
+					data-toggle="collapse"
+					type="button">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			@Html.ActionLink("SmartHouse-Control", "MasterPagePartial", "Home", new { area = "" }, new { @class = "navbar-brand" })
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="#about">
+						Информация
+					</a>
+				</li>
+				<li>
+					<a href="#send[message]">
+						Связаться
+					</a>
+				</li>
+				<li class="right">
+					<a href="#signIn">
+						Авторизация
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<main id="signIn">
+	<div class='bg-cl-black'>
+		<div data-masonry='{ "itemSelector": ".item-a" }'>
+			<div class='front-cl-white item-a text-center'>
+				<h1>
+					Важность Авторизации!
+				</h1>
+				<div class='big-text'>
+					<p>
+						Для доступа к системе необходимо авторизоваться. При отсутствии доступа необходимо обратиться на
+						<a class='front-cl-white'
+						   href='mailto:jdanov.vad1m@gmail.com'
+						   style='text-decoration: underline'>
+							почту
+						</a>
+					</p>
+				</div>
+			</div>
+			<div class='front-cl-gray item-a'>
+				@Html.Partial("SignIn")
+			</div>
+		</div>
+		<br/>
+	</div>
+	<div class='container-xll'
+		 id="about">
+		<br />
+		<div class='bg-cl-white'
+		     data-masonry='{ "itemSelector": ".item" }'>
+			<div class='item'>
+				<img class='img-responsive'
+				     height='490'
+				     src='~/Resources/example.jpg'
+				     style='padding: 0 0 0 90px'
+				     width='490' />
+				<br />
+			</div>
+			<div class='big-text item'>
+				<div>
+					Система SmartHouse-Control позволяет:
+				</div>
+				<ul>
+					<li>
+						Разграничить доступ для помещений.
+					</li>
+					<li>
+						Просмотреть 3D модель помещения.
+					</li>
+					<li>
+						Изменять данные датчиков для управления моделью.
+					</li>
+					<li>
+						Выгружать отчеты по датчикам в файл.
+					</li>
+				</ul>
+			</div>
+			<br />
+		</div>
+	</div>
+	<div class='bg-cl-black container-xl'
+		 id="send[message]">
+		<br />
+		<div class='front-cl-white text-center'>
+			<h2 class='h1'>
+				<br />
+				Для доступа к системе необходимо отправить
+				<br />
+				<a class='front-cl-white text-center'
+				   href='mailto:jdanov.vad1m@gmail.com'
+				   style='text-decoration: underline'>
+					запрос на почту
+				</a>
+			</h2>
+		</div>
+	</div>
+
+</main>

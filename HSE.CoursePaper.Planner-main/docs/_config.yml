@@ -1,0 +1,14 @@
+title: OmnySync Planner - Diploma
+404_title: OmnySync Planner - 404
+email: zhdanov.vdm@gmail.com
+description: >- # this means to ignore newlines until "baseurl:"
+  This is page for downloading script for diploma work of
+  Vadim Zhdanov
+show_downloads: true
+github:
+    zip_url: https://drive.google.com/uc?export=download&confirm=no_antivirus&id=17hAXewUkD_oGJ6yW52FxIq6IydxQ3LGS
+    tar_url: https://drive.google.com/uc?export=download&confirm=no_antivirus&id=17hAXewUkD_oGJ6yW52FxIq6IydxQ3LGS
+# Build settings
+theme: jekyll-theme-slate
+plugins:
+  - jekyll-feed

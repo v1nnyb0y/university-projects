@@ -1,0 +1,681 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>868a7b3d-b8a1-4fc8-b6c2-f9cbd5033f08</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>Coursera\Week.9\Task.6.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>Python</Name>
+    <RootNamespace>Python</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Coursera\Week.1\Task.1.py" />
+    <Compile Include="Coursera\Week.1\Task.10.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.11.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.12.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.13.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.14.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.15.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.16.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.17.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.18.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.19.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.2.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.20.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.21.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.22.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.23.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.24.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.3.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.4.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.5.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.6.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.7.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.8.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.1\Task.9.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.10.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.11.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.12.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.13.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.14.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.15.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.16.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.17.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.18.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.19.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.2.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.20.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.21.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.22.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.23.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.24.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.25.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.26.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.27.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.28.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.29.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.3.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.30.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.31.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.32.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.33.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.34.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.35.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.36.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.37.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.38.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.39.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.4.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.40.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.41.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.42.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.43.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.44.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.45.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.46.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.47.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.5.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.6.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.7.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.8.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.2\Task.9.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.3\Task.1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.3\Task.10.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.3\Task.11.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.3\Task.12.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.3\Task.13.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.3\Task.14.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.3\Task.2.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.3\Task.3.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.3\Task.4.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.3\Task.5.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.3\Task.6.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.3\Task.7.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.3\Task.8.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.3\Task.9.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.10.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.11.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.12.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.13.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.14.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.15.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.16.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.17.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.18.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.19.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.2.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.20.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.21.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.22.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.23.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.24.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.3.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.4.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.5.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.6.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.7.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.8.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.4\Task.9.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.10.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.11.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.12.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.13.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.14.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.15.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.16.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.17.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.18.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.19.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.2.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.20.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.21.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.22.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.23.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.24.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.25.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.26.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.27.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.28.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.29.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.3.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.30.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.31.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.32.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.33.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.34.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.35.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.36.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.37.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.38.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.39.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.4.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.40.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.41.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.5.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.6.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.7.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.8.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.5\Task.9.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.10.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.11.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.12.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.13.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.14.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.15.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.16.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.17.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.18.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.19.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.2.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.3.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.4.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.5.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.6.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.7.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.8.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.6\Task.9.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.10.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.11.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.12.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.13.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.14.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.15.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.16.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.17.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.18.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.19.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.2.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.20.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.21.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.22.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.23.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.24.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.3.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.4.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.5.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.6.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.7.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.8.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.7\Task.9.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.8\Task.1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.8\Task.10.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.8\Task.11.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.8\Task.12.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.8\Task.2.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.8\Task.3.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.8\Task.4.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.8\Task.5.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.8\Task.6.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.8\Task.7.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.8\Task.8.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.8\Task.9.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.9\Task.1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.9\Task.2.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.9\Task.3.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.9\Task.4.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.9\Task.5.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Coursera\Week.9\Task.6.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Coursera\" />
+    <Folder Include="Coursera\Week.9\" />
+    <Folder Include="Coursera\Week.8\" />
+    <Folder Include="Coursera\Week.7\" />
+    <Folder Include="Coursera\Week.6\" />
+    <Folder Include="Coursera\Week.5\" />
+    <Folder Include="Coursera\Week.4\" />
+    <Folder Include="Coursera\Week.3\" />
+    <Folder Include="Coursera\Week.2\" />
+    <Folder Include="Coursera\Week.1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="input.txt" />
+    <Content Include="output.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

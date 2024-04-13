@@ -1,0 +1,5 @@
+﻿@if (Session["CurrUsr"] == null)
+{
+	@Html.Partial(
+				  "_LayoutNotAuthenticated")
+}

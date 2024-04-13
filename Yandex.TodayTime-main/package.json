@@ -1,0 +1,19 @@
+{
+  "name": "yandex.todaytime",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/v1nnyb0y/Yandex.TodayTime.git"
+  },
+  "author": "Vadim Zhdanov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/v1nnyb0y/Yandex.TodayTime/issues"
+  },
+  "homepage": "https://github.com/v1nnyb0y/Yandex.TodayTime#readme"
+}

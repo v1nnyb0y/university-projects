@@ -1,0 +1,161 @@
+﻿@model SmartHouse_Control_Web.Models.NewUser
+
+@{
+	Layout = "~/Views/Shared/MasterPage.cshtml";
+}
+
+@using (Html.BeginForm
+	(
+	 "Register",
+		"Account",
+		"",
+		FormMethod.Post,
+		new
+			{
+				enctype = "multipart/form-data",
+				role = "form"
+			})) {
+	@Html.AntiForgeryToken()
+	<div class='container body-content'>
+		<h4 class='col-md-6'>Регистрация нового пользователя</h4>
+		<div class='row'>
+			@Html.HiddenFor(model => model.RoomId)
+			<div class='col-md-offset-9 text-right'
+			     style='font-size: 17px'>
+				<input class='btn btn-default'
+				       name='Bttn'
+				       style='background-color: #2DC354'
+				       type='submit'
+				       value='Зарегистрировать' /> |
+				@Html.ActionLink(
+				                 "Назад",
+					"Index",
+					"RoomView",
+					new
+						{
+							roomId = Model.RoomId
+						},
+					null)
+			</div>
+		</div>
+		<hr />
+		<div class='form-group'>
+			@Html.LabelFor(
+			               model => model.Name,
+				new
+					{
+						@class = "control-label col-md-8"
+					})
+			<div class="col-md-offset-8">
+				@Html.EditorFor(
+				                model => model.Name,
+					new
+						{
+							htmlAttributes = new
+								                 {
+									                 @class = "form-control"
+								                 }
+						})
+				@Html.ValidationMessageFor(
+				                           model => model.Name,
+					"",
+					new
+						{
+							@class = "text-danger"
+						})
+			</div>
+		</div>
+		<div class='form-group'>
+			@Html.LabelFor(
+			               model => model.SecondName,
+				new
+					{
+						@class = "control-label col-md-8"
+					})
+			<div class="col-md-offset-8">
+				@Html.EditorFor(
+				                model => model.SecondName,
+					new
+						{
+							htmlAttributes = new
+								                 {
+									                 @class = "form-control"
+								                 }
+						})
+				@Html.ValidationMessageFor(
+				                           model => model.SecondName,
+					"",
+					new
+						{
+							@class = "text-danger"
+						})
+			</div>
+		</div>
+		<div class='form-group'>
+			@Html.LabelFor(
+			               model => model.Login,
+				new
+					{
+						@class = "control-label col-md-8"
+					})
+			<div class="col-md-offset-8">
+				@Html.EditorFor(
+				                model => model.Login,
+					new
+						{
+							htmlAttributes = new
+								                 {
+									                 @class = "form-control"
+								                 }
+						})
+				@Html.ValidationMessageFor(
+				                           model => model.Login,
+					"",
+					new
+						{
+							@class = "text-danger"
+						})
+			</div>
+		</div>
+		<div class='form-group'>
+			@Html.LabelFor(
+			               model => model.Password,
+				new
+					{
+						@class = "control-label col-md-8"
+					})
+			<div class="col-md-offset-8">
+				@Html.EditorFor(
+				                model => model.Password,
+					new
+						{
+							htmlAttributes = new
+								                 {
+									                 @class = "form-control"
+								                 }
+						})
+				@Html.ValidationMessageFor(
+				                           model => model.Password,
+					"",
+					new
+						{
+							@class = "text-danger"
+						})
+			</div>
+		</div>
+		<input class='btn btn-default'
+		       name='Bttn'
+		       style='background-color: #2DC354'
+		       type='submit'
+		       value='Зарегистрировать' />
+		@Html.ValidationSummary()
+	</div>
+}
+
+@section Scripts {
+	@Scripts.Render(
+	                "~/bundles/jqueryval")
+}
+
+
+

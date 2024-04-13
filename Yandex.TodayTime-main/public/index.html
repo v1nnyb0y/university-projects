@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Current datetime</title>
+    </head>
+    <body>
+        <label> CURRENT DATETIME (MOSCOW +02:00) :</label>
+        <div id="current_date_time_block"></div>
+    </body>
+</html>
+
+<script type="text/javascript">
+    // get current time
+    function getDateTime() {
+        var currentDateTime = new Date();
+
+        updateTimeInDivEl(currentDateTime.toLocaleString());
+    }
+
+    // update time in div el (display date time)
+    function updateTimeInDivEl(datetime) {
+        document.getElementById('current_date_time_block').innerHTML = datetime;
+    }
+
+    // first load (display date time)
+    getDateTime()
+
+    // 1 sec updated time
+    setInterval(function() {
+        getDateTime()
+    }, 1000)
+</script>

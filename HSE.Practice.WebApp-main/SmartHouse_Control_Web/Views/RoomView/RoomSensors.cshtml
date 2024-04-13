@@ -1,0 +1,65 @@
+﻿@model Provider.CurrentSession.Room
+
+@using (Html.BeginForm
+	(
+	 "RoomSensors",
+		"RoomView",
+		new
+			{
+				roomId = Model.Index
+			},
+		FormMethod.Post)) {
+	<hr/>
+	<div>
+		<h2 class='text-center'>Данные</h2>
+
+		<table class='table text-center'
+		       cols='4'>
+			<tr class='text-uppercase'>
+				<th class='text-center'>
+					<p>Датчик</p>
+				</th>
+				<th class='text-center'>
+					<p>Семейство</p>
+				</th>
+				<th class='text-center'>
+					<p>Состояние</p>
+				</th>
+				<th class='text-center'>
+					<p>Показатель (Последний)</p>
+				</th>
+			</tr>
+
+
+			@{
+				System.Diagnostics.Debug.Assert
+					(
+					 Model?.ListSensors != null,
+						"Model?.ListSensors != null"
+					);
+			}
+
+			@foreach (var sensor in Model?.ListSensors) {
+				<tr>
+					<td>
+						<p>
+							@sensor.Name
+						</p>
+					</td>
+					<td>
+						<p>
+							@sensor.Fam
+						</p>
+					</td>
+					<td>
+						<p>@sensor.State</p>
+					</td>
+					<td>
+						<p>@sensor.Data</p>
+					</td>
+				</tr>
+			}
+		</table>
+	</div>
+}
+

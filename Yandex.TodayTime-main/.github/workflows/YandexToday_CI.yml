@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+env: 
+  registry: cr.yandex/crp50j9hporsn9435fmm
+  app_name: yandext:yandextoday
+
+jobs:
+  build: 
+    name: Build Solution to Docker image
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: Checkout Solution
+        uses: actions/checkout@v2
+
+      - name: Login to Docker
+        run: echo '${{ secrets.IAM }}' | docker login --username oauth --password-stdin cr.yandex
+      
+      - name: Build Solution
+        run: docker build . -t ${{ env.registry }}/${{ env.app_name }}
+
+      - name: Push Solution to Container
+        run: docker push ${{ env.registry }}/${{ env.app_name }}
+
+  deploy:
+    needs: build
+    name: Deploy on Yandex.Cloud
+    runs-on: ubuntu-latest
+
+    env:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+      SSH_KEY_PATH: ${{ github.workspace }}/../private.key
+
+    steps:
+      - name: Create SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ env.SSH_PRIVATE_KEY }}" > ../private.key
+          sudo chmod 600 ../private.key
+          echo "${{ env.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+
+      - name: Stop WebSite
+        run: ssh -i ${{ env.SSH_KEY_PATH }} vinny_boy@${{ secrets.PUBLIC_IP }} \ docker container stop $(ssh -i ${{ env.SSH_KEY_PATH }} vinny_boy@${{ secrets.PUBLIC_IP }} \ docker container ls -aq)
+
+      - name: Login to Docker
+        run: ssh -i ${{ env.SSH_KEY_PATH }} vinny_boy@${{ secrets.PUBLIC_IP }} \
+            curl -H Metadata-Flavor:Google 169.254.169.254/computeMetadata/v1/instance/service-accounts/default/token | cut -f1 -d',' | cut -f2 -d':' | tr -d '"' | sudo docker login --username iam --password-stdin cr.yandex
+
+      - name: Pull from Docker
+        run: ssh -i ${{ env.SSH_KEY_PATH }} vinny_boy@${{ secrets.PUBLIC_IP }} \ docker pull ${{ env.registry }}/${{ env.app_name }}
+
+      - name: Run WebSite
+        run: ssh -i ${{ env.SSH_KEY_PATH }} vinny_boy@${{ secrets.PUBLIC_IP }} \ docker run -d -p 43250:2093 --rm ${{ env.registry }}/${{ env.app_name }}
+
+          

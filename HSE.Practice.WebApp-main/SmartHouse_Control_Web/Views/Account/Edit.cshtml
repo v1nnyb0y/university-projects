@@ -1,0 +1,303 @@
+﻿@model Provider.CurrentSession.User
+
+@{
+	ViewBag.Title = "Edit";
+	Layout = "~/Views/Shared/MasterPage.cshtml";
+}
+
+@using (Html.BeginForm
+	(
+	 "Edit",
+		"Account",
+	 "",
+		FormMethod.Post,
+		new
+		{
+			enctype = "multipart/form-data",
+			role = "form"
+		}))
+{
+	@Html.AntiForgeryToken()
+	<div class="body-content container">
+
+		@{
+			ViewBag.Title = "Редактирование личного кабинета";
+		}
+		<h2>@ViewBag.Title.</h2>
+
+		<div class='row'>
+			<h4 class='col-md-6'>Редактирование параметров учетной записи</h4>
+			<div class='col-md-offset-9 text-right'
+				 style='font-size: 17px'>
+				<input class='btn btn-default'
+					   name='Bttn'
+					   style='background-color: #2DC354'
+					   type='submit'
+					   value='Сохранить' /> |
+				@Html.ActionLink(
+								 "Назад",
+					"Index",
+					"Account",
+					new
+						{
+							@class = "btn btn-default",
+							type = "submit",
+							name = "bttn",
+							style = "background-color: #2DC354"
+						})
+			</div>
+		</div>
+		<hr />
+		<div class='row'>
+			@Html.Partial(
+						  "UploadImage")
+			<div class='col-md-7'>
+				<h2 class='text-center'>Личная информация</h2>
+				<div class='col-md-offset-1'
+					 style='font-size: 17px'>
+					<div class="form-group">
+						@Html.LabelFor(
+									   model => model.Name,
+							new
+								{
+									@class = "control-label col-md-8"
+								})
+						<div class='col-md-offset-8'>
+							@Html.EditorFor(
+											model => model.Name,
+								new
+									{
+										htmlAttributes = new
+															 {
+																 @class = "form-control"
+															 }
+									})
+							@Html.ValidationMessageFor(
+													   model => model.Name,
+								"",
+								new
+									{
+										@class = "text-danger"
+									})
+						</div>
+					</div>
+					<div class="form-group">
+						@Html.LabelFor(
+									   model => model.SecondName,
+							new
+								{
+									@class = "control-label col-md-8"
+								})
+						<div class="col-md-offset-8">
+							@Html.EditorFor(
+											model => model.SecondName,
+								new
+									{
+										htmlAttributes = new
+															 {
+																 @class = "form-control"
+															 }
+									})
+							@Html.ValidationMessageFor(
+													   model => model.SecondName,
+								"",
+								new
+									{
+										@class = "text-danger"
+									})
+						</div>
+					</div>
+					<div class="form-group">
+						@Html.LabelFor(
+									   model => model.FatherName,
+							new
+								{
+									@class = "control-label col-md-8"
+								})
+						<div class="col-md-offset-8">
+							@Html.EditorFor(
+											model => model.FatherName,
+								new
+									{
+										htmlAttributes = new
+															 {
+																 @class = "form-control"
+															 }
+									})
+							@Html.ValidationMessageFor(
+													   model => model.FatherName,
+								"",
+								new
+									{
+										@class = "text-danger"
+									})
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(
+									   model => model.Access,
+							new
+								{
+									@class = "control-label col-md-8"
+								})
+						<div class="col-md-offset-8">
+							@Html.DisplayFor(
+											 model => model.Access)
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(
+									   model => model.PhoneNumber,
+							new
+								{
+									@class = "control-label col-md-8"
+								})
+						<div class="col-md-offset-8">
+							@Html.EditorFor(
+											model => model.PhoneNumber,
+								new
+									{
+										htmlAttributes = new
+															 {
+																 @class = "form-control"
+															 }
+									})
+							@Html.ValidationMessageFor(
+													   model => model.PhoneNumber,
+								"",
+								new
+									{
+										@class = "text-danger"
+									})
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(
+									   model => model.EMail,
+							new
+								{
+									@class = "control-label col-md-8"
+								})
+						<div class="col-md-offset-8">
+							@Html.EditorFor(
+											model => model.EMail,
+								new
+									{
+										htmlAttributes = new
+															 {
+																 @class = "form-control"
+															 }
+									})
+							@Html.ValidationMessageFor(
+													   model => model.EMail,
+								"",
+								new
+									{
+										@class = "text-danger"
+									})
+						</div>
+					</div>
+
+					<div class="form-group">
+						@Html.LabelFor(
+									   model => model.Password,
+							new
+								{
+									@class = "control-label col-md-8"
+								})
+						<div class="col-md-offset-8">
+							@Html.EditorFor(
+											model => model.Password,
+								new
+									{
+										htmlAttributes = new
+															 {
+																 @class = "form-control",
+																 type = "password"
+															 }
+									})
+							@Html.ValidationMessageFor(
+													   model => model.Password,
+								"",
+								new
+									{
+										@class = "text-danger"
+									})
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr />
+		<div>
+			<h2 class='text-center'>Дополнительная информация</h2>
+			<div class='table'
+				 style='font-size: 17px;'>
+				<div class="form-group">
+					@Html.LabelFor(
+								   model => model.Address,
+						new
+							{
+								@class = "control-label col-md-7"
+							})
+					<div class="col-md-offset-9">
+						@Html.EditorFor(
+										model => model.Address,
+							new
+								{
+									htmlAttributes = new
+														 {
+															 @class = "form-control"
+														 }
+								})
+						@Html.ValidationMessageFor(
+												   model => model.Address,
+							"",
+							new
+								{
+									@class = "text-danger"
+								})
+					</div>
+				</div>
+
+				@Html.HiddenFor(
+								model => model.PersonId)
+
+				<div class="form-group">
+					@Html.LabelFor(
+								   model => model.Organization,
+						new
+							{
+								@class = "control-label col-md-7"
+							})
+					<div class="col-md-offset-9">
+						@Html.EditorFor(
+										model => model.Organization,
+							new
+								{
+									htmlAttributes = new
+														 {
+															 @class = "form-control"
+														 }
+								})
+						@Html.ValidationMessageFor(
+												   model => model.Organization,
+							"",
+							new
+								{
+									@class = "text-danger"
+								})
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}
+
+@section Scripts {
+	@Scripts.Render(
+					"~/bundles/jqueryval")
+}
